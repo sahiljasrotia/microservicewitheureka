@@ -1,0 +1,4 @@
+/user-service/target/
+/order-service/target/
+/eureka-server/target/
+/api-gateway/target/
