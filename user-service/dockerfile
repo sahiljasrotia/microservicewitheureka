@@ -1,0 +1,9 @@
+# 1. Use OpenJDK base image
+FROM openjdk:17-jdk-slim
+
+# 2. Add a jar file from target folder to the image
+ARG JAR_FILE=target/user-service-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+
+# 3. Run the jar
+ENTRYPOINT ["java","-jar","/app.jar"]
