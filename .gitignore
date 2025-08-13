@@ -2,3 +2,8 @@
 /order-service/target/
 /eureka-server/target/
 /api-gateway/target/
+/.idea
+/user-service/target
+/user-service/target
+/user-service/target/classes
+/user-service/target
