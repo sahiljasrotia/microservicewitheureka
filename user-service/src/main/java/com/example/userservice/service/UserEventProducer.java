@@ -1,5 +1,6 @@
 package com.example.userservice.service;
 
+import com.example.userservice.model.User;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,9 @@ public class UserEventProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendUserCreatedEvent(String userId) {
-        String message = "UserCreated:" + userId;
+    public void sendUserCreatedEvent(User user) {
+
+        String message = "UserCreated:" + user.toString();
         kafkaTemplate.send(TOPIC, message);
         System.out.println("📤 Sent event to Kafka: " + message);
     }

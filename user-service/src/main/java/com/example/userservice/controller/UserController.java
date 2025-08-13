@@ -1,27 +1,39 @@
 package com.example.userservice.controller;
 
+import com.example.userservice.model.User;
 import com.example.userservice.service.UserEventProducer;
+import com.example.userservice.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-    private final UserEventProducer producer;
+    private final UserService service;
 
-    public UserController(UserEventProducer producer) {
-        this.producer = producer;
+
+    public UserController(UserService service) {
+        this.service = service;
     }
-
-    @GetMapping("/info")
-    public String userInfo() {
-        return "User info from UserService";
-    }
-
 
     @PostMapping("/create")
-    public String createUser(@RequestParam("userId") String userId) {
-        producer.sendUserCreatedEvent(userId);
-        return "User created and event sent";
+    public User createUser(@RequestBody User user) {
+        return service.createUser(user);
     }
+
+    @GetMapping("/getUserInfo")
+    public Optional<User> getUserInfo(@RequestParam Long userId) {        
+        return service.findUser(userId);
+    }
+
+    @GetMapping("/getAllUserInfo")
+    public List<User> getAllUserInfo() {
+        return service.findAllUser();
+
+    }
+
+
 }
