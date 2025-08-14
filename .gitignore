@@ -7,3 +7,12 @@
 /user-service/target
 /user-service/target/classes
 /user-service/target
+/user-service/target
+/api-gateway/target
+/eureka-server/target
+user-service/target/classes/application.properties
+*.class
+/api-gateway/target/classes
+/eureka-server/target
+order-service/target/classes/application.properties
+/payment-service/target

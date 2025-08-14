@@ -9,5 +9,6 @@ public interface UserService {
     public User createUser(User user);
     public Optional<User> findUser(Long userId);
     public List<User> findAllUser();
+    public void updateUserBalance(Long userId, Double amount);
 
 }

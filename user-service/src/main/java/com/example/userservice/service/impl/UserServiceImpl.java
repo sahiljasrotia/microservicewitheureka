@@ -48,4 +48,16 @@ public class UserServiceImpl implements UserService {
     public List<User> findAllUser() {
         return userRepo.findAll();
     }
+
+    @Override
+    public void updateUserBalance(Long userId, Double amount) {
+        userRepo.findById(userId)
+                .map(user -> {
+                    user.setAmount(user.getAmount() - amount);
+                    return userRepo.save(user);
+                })
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+
+    }
 }
